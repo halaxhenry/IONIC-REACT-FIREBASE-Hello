@@ -6,27 +6,29 @@ import {
 	IonTitle, 
 	IonToolbar, 
 	IonItem,
-	IonLabel,
-
+    IonLabel,
+    IonButton,
 } from '@ionic/react';
-import './Home.css';
 
-const Home: React.FC = () => {
+
+const Example: React.FC = () => {
 
   return (
     <IonApp>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Home!</IonTitle>
+          <IonTitle>Example!</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
-		<IonItem routerLink="/example">
-				<IonLabel>to Example</IonLabel>
+        <IonItem routerLink="/">
+			<IonLabel>to Home</IonLabel>
 		</IonItem>
+
+        <IonButton routerLink="/">Click Me</IonButton>
 	  </IonContent>
     </IonApp>
   );
 };
 
-export default Home;
+export default Example;
