@@ -10,7 +10,7 @@ import {
 	IonButton,
     IonInput,
 } from '@ionic/react';
-
+import {Link} from 'react-router-dom';
 
 const Login: React.FC = () => {
 
@@ -32,6 +32,10 @@ const Login: React.FC = () => {
 		<IonInput placeholder="Username?" onIonChange={(e: any) => setUsername(e.target.value)} />
         <IonInput placeholder="Password?" onIonChange={(e: any) => setPassword(e.target.value)} />
         <IonButton onClick={loginUser}>Login</IonButton>
+
+        <p>
+            New here? <Link to="/register">Register</Link>
+        </p>
 
         <IonButton routerLink="/">Home</IonButton>
 	  </IonContent>
