@@ -1,17 +1,22 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { 
 	IonContent, 
 	IonHeader, 
 	IonApp, 
 	IonTitle, 
 	IonToolbar, 
-	IonButton,
-	IonIcon,
+	IonInput
 } from '@ionic/react';
-import {star} from 'ionicons/icons';
 import './Home.css';
 
 const Home: React.FC = () => {
+
+	const [input, setInput] = useState<string>('');
+
+	useEffect(() => {
+		console.log(input)
+	}, [input])
+
   return (
     <IonApp>
       <IonHeader>
@@ -20,10 +25,11 @@ const Home: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
-		  <IonButton expand="full" color="secondary">
-			  <IonIcon slot="end" icon={star}></IonIcon>
-			  Hello World
-		  </IonButton>
+		  <IonInput 
+		  	value={input} 
+			onIonChange={(e: any) => setInput(e.target.value)}
+		  >
+		  </IonInput>
 	  </IonContent>
     </IonApp>
   );
