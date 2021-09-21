@@ -11,13 +11,13 @@ import {
 } from '@ionic/react';
 
 
-const Home: React.FC = () => {
+const Register: React.FC = () => {
 
   return (
     <IonApp>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Home!</IonTitle>
+          <IonTitle>Register!</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
@@ -28,4 +28,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default Register;
