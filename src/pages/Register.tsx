@@ -38,8 +38,8 @@ const Register: React.FC = () => {
       </IonHeader>
       <IonContent className="ion-padding">
 		<IonInput placeholder="Username?" onIonChange={(e: any) => setUsername(e.target.value)} />
-        <IonInput placeholder="Password?" onIonChange={(e: any) => setPassword(e.target.value)} />
-        <IonInput placeholder="Confirm Password?" onIonChange={(e: any) => setCPassword(e.target.value)} />
+        <IonInput type="password" placeholder="Password?" onIonChange={(e: any) => setPassword(e.target.value)} />
+        <IonInput type="password" placeholder="Confirm Password?" onIonChange={(e: any) => setCPassword(e.target.value)} />
         <IonButton onClick={registerUser}>Register</IonButton>
 
         <p>
