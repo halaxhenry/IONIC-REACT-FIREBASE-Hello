@@ -24,12 +24,10 @@ const Login: React.FC = () => {
     async function login() {
 
         const res = await loginUser(email, password);
-        
-        if(!res){
-          toast('Error loggin with your credentials')
-        }else{
-          toast('You have logged in!')
-        }
+
+        // if(res){
+        //   toast('You have logged in!');
+        // }
     }
 
   return (
