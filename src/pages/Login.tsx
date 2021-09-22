@@ -12,6 +12,7 @@ import {
 } from '@ionic/react';
 import {Link} from 'react-router-dom';
 import { loginUser } from '../firebaseConfig';
+import { toast } from '../toast';
 
 
 
@@ -21,8 +22,14 @@ const Login: React.FC = () => {
     const [password, setPassword] = useState('');
 
     async function login() {
+
         const res = await loginUser(email, password);
-        alert(`${res ? 'Login success' : 'Login failed'}`);
+        
+        if(!res){
+          toast('Error loggin with your credentials')
+        }else{
+          toast('You have logged in!')
+        }
     }
 
   return (
