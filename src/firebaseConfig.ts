@@ -20,23 +20,20 @@ const auth = getAuth();
 
 export async function loginUser(username: string, password: string) {
   const email = `${username}@codedamn.com`;
-  
 
   signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    // ...
-    toast('login success');
-    alert(user.email);
+    toast('login success : ' + user.email);
+    // alert(user.email);
   })
   .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(error);
-    alert(error);
-    alert(errorCode);
-    alert(errorMessage);
+    // const errorCode = error.code;
+    // const errorMessage = error.message;
+
+    toast('Cannot find user, Please check!');
+
   });
 }
 
@@ -55,7 +52,7 @@ export async function registerUser(username: string, password: string) {
     const errorCode = error.code;
     const errorMessage = error.message;
     // ..
-    alert(errorCode);
-    alert(errorMessage);
+    toast(errorCode);
+    toast(errorMessage);
   });
 }

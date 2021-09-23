@@ -8,11 +8,13 @@ import {
 	IonItem,
 	IonLabel,
 	IonButton,
-    IonInput,
+  IonInput,
+  IonLoading,
 } from '@ionic/react';
 import {Link} from 'react-router-dom';
 import { loginUser } from '../firebaseConfig';
 import { toast } from '../toast';
+import { signInWithRedirect } from '@firebase/auth';
 
 
 
@@ -22,12 +24,7 @@ const Login: React.FC = () => {
     const [password, setPassword] = useState('');
 
     async function login() {
-
-        const res = await loginUser(email, password);
-
-        // if(res){
-        //   toast('You have logged in!');
-        // }
+      const res = await loginUser(email, password);
     }
 
   return (
@@ -37,6 +34,7 @@ const Login: React.FC = () => {
           <IonTitle>Login!</IonTitle>
         </IonToolbar>
       </IonHeader>
+
       <IonContent className="ion-padding">
 		<IonInput placeholder="Email?" onIonChange={(e: any) => setEmail(e.target.value)} />
         <IonInput type="password" placeholder="Password?" onIonChange={(e: any) => setPassword(e.target.value)} />

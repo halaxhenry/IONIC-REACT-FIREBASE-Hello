@@ -8,7 +8,8 @@ import {
 	IonItem,
 	IonLabel,
 	IonButton,
-    IonInput,
+  IonInput,
+  IonLoading,
 } from '@ionic/react';
 import {Link} from 'react-router-dom'
 import { toast } from '../toast';
@@ -19,10 +20,14 @@ const Register: React.FC = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [cpassword, setCPassword] = useState('');
+    const [busy, setBusy] = useState<boolean>(false);
+    
 
     async function register() {
 
-
+      setBusy(true);
+      
+        
       // validation
         if(password !== cpassword){
           return toast('Passwords do not match')
@@ -34,9 +39,9 @@ const Register: React.FC = () => {
 
         const res = await registerUser(username, password);
 
-        // if(res){
-        //   toast('You have registred successfully')
-        // }
+        setBusy(false);
+
+     
         
     }
 
@@ -48,6 +53,9 @@ const Register: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
+
+      <IonLoading message="Please wait.." duration={0} isOpen={busy} />
+
 		<IonInput placeholder="Username?" onIonChange={(e: any) => setUsername(e.target.value)} />
         <IonInput type="password" placeholder="Password?" onIonChange={(e: any) => setPassword(e.target.value)} />
         <IonInput type="password" placeholder="Confirm Password?" onIonChange={(e: any) => setCPassword(e.target.value)} />
