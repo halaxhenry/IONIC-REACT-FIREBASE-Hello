@@ -15,3 +15,11 @@
 ## checking user have signed up --> https://console.firebase.google.com/project/ionic-react-hello/authentication/users
 
 ## https://stackoverflow.com/questions/66702421/firebase-code-400-message-configuration-not-found
+
+## React Redux (https://react-redux.js.org/introduction/getting-started)
+
+### npm install react-redux --save
+
+### npm install @types/react-redux --save-dev
+
+### npm install redux --save
