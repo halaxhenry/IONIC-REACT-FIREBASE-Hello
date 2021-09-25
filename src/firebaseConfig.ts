@@ -1,7 +1,22 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { toast } from "./toast";
+import {
+  initializeApp
+} from "firebase/app";
+import {
+  getAnalytics
+} from "firebase/analytics";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+} from "firebase/auth";
+import {
+  toast
+} from "./toast";
+import {
+  resolve
+} from "dns";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDq62VTzH8X0YpznAgI9MePA-vCZVtOF_0",
@@ -22,37 +37,51 @@ export async function loginUser(username: string, password: string) {
   const email = `${username}@codedamn.com`;
 
   signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    toast('login success : ' + user.email);
-    // alert(user.email);
-  })
-  .catch((error) => {
-    // const errorCode = error.code;
-    // const errorMessage = error.message;
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      toast('login success : ' + user.email);
+      // alert(user.email);
+    })
+    .catch((error) => {
+      // const errorCode = error.code;
+      // const errorMessage = error.message;
 
-    toast('Cannot find user, Please check!');
+      toast('Cannot find user, Please check!');
 
-  });
+    });
 }
 
 export async function registerUser(username: string, password: string) {
   const email = `${username}@codedamn.com`;
-  
-  createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    // ...
 
-    alert(user.email);
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-    toast(errorCode);
-    toast(errorMessage);
-  });
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      // ...
+
+      alert(user.email);
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // ..
+      toast(errorCode);
+      toast(errorMessage);
+    });
 }
+
+export function getCurrentUser() {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged(function(user) {
+      if (user) {
+        resolve(user)
+      }else{
+        resolve(null);
+      }
+      unsubscribe()
+    })
+  })
+}
+

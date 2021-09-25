@@ -8,25 +8,30 @@ import {
 	IonItem,
 	IonLabel,
 	IonButton,
+  IonInput,
+  IonLoading,
 } from '@ionic/react';
 
 
-const Home: React.FC = () => {
+
+const Dashboard: React.FC = () => {
+
 
   return (
     <IonApp>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Home!</IonTitle>
+          <IonTitle>Dashboard!</IonTitle>
         </IonToolbar>
       </IonHeader>
+
       <IonContent className="ion-padding">
-		<IonButton routerLink="/login">Login</IonButton>
-		<IonButton routerLink="/register" color="secondary">Register</IonButton>
-		<IonButton routerLink="/dashboard" color="secondary">Dashboard</IonButton>
+		
+        <p>Hello whatever user</p>
+        <IonButton routerLink="/">Home</IonButton>
 	  </IonContent>
     </IonApp>
   );
 };
 
-export default Home;
+export default Dashboard;
